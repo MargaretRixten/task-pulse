@@ -7,18 +7,22 @@ import {useEffect, useState} from "react";
 import {useAppDispatch} from "../../store/hooks.ts";
 import {setTasksAction} from "../../store/actions/tasks.ts";
 import {EFilters} from "../../enums/tasks.enum.ts";
+import Counter from "../../components/counter/Counter.tsx";
 
 function TasksModule() {
     const dispatch = useAppDispatch();
     const tasks = useSelector(tasksSelector);
     const filters = useSelector(filtersSelector);
     const [tasksSorted, setTasksSorted] = useState(tasks);
+    const [activeTasks, setActiveTasks] = useState(tasks);
     useEffect(() => {
         if(!localStorage.getItem('tasks')) return;
         dispatch(setTasksAction(JSON.parse(localStorage.getItem('tasks') || '')));
     }, [])
     useEffect(() => {
         localStorage.setItem('tasks', JSON.stringify(tasks!));
+        if(!tasks) return
+        setActiveTasks(tasks.filter(task => !task.complete))
     }, [tasks]);
 
     useEffect(() => {
@@ -39,8 +43,9 @@ function TasksModule() {
 
     return (
         <>
-            <h1>My Todo List</h1>
+            <h1 className="title">My Todo List</h1>
             <Filters/>
+            <Counter activeTasks={activeTasks}/>
             <TodoForm/>
             <TodoList tasks={tasksSorted}/>
             {
