@@ -1,0 +1,39 @@
+.task {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 10px 10px 35px;
+  background: #cab8d03d;
+  color: #b981a8;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  &__complete-wrap {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    max-width: 420px;
+    width: 100%;
+  }
+  &__check {
+    width: 20px;
+    height: 20px;
+  }
+  &__text {
+    padding: 2px;
+    border-radius: 5px;
+    background: #f0eef13d;
+    max-width: 500px;
+    width: 100%;
+    &:focus {
+      outline: 1px solid #cfb2ef;
+      background: #fafafa;
+    }
+    &_completed {
+      text-decoration: line-through;
+      color: #7a7a7a;
+    }
+  }
+}

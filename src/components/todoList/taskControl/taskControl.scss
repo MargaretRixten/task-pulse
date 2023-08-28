@@ -1,0 +1,28 @@
+.task-control {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  &__icon {
+    svg {
+      color: #b981a8;
+      font-size: 1.1em;
+      cursor: pointer;
+      &:hover {
+        transform: scale(0.95);
+      }
+    }
+  }
+  &__accept {
+    svg {
+      font-size: 1.4em;
+      color: #63c071;
+    }
+  }
+  &__cancel {
+    svg {
+      color: #da6266;
+      font-size: 1.5em;
+    }
+  }
+}
